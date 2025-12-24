@@ -4,7 +4,7 @@ add_executable(sort_tests
 )
 
 target_link_libraries(sort_tests
-    sort_lib
+    ${SORT_LIB_NAME} 
     gtest
     gtest_main
 )

@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../src/sort.h"
+#include "sort.h"
 
 TEST(MergeSortTest, Basic) {
     int arr[] = {5, 2, 8, 1, 3};
