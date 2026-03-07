@@ -1,0 +1,12 @@
+FComparisons.equal 12 0.000344875
+FComparisons.not_equal 12 0.000318228
+FComparisons.more 12 0.000365427
+FComparisons.less 12 0.00047346
+FArithmetic.summ 12 0.000536066
+FArithmetic.substraction 12 0.000550709
+FArithmetic.multiply 12 0.000522318
+FArithmetic.division 12 0.000574337
+FArithmetic.division_full_sign_example 9 0.000732151
+FArithmetic.remainder 12 0.000531686
+FArithmetic.remainder_full_sign_example 12 0.00058009
+---

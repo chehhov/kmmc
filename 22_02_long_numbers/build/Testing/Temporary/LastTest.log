@@ -1,0 +1,289 @@
+Start testing: Mar 07 13:43 MSK
+----------------------------------------------------------
+1/11 Testing: FComparisons.equal
+1/11 Test: FComparisons.equal
+Command: "/home/alex/repo/kmmc/22_02_long_numbers/build/test/long_number_test" "--gtest_filter=FComparisons.equal" "--gtest_also_run_disabled_tests"
+Directory: /home/alex/repo/kmmc/22_02_long_numbers/build/test
+"FComparisons.equal" start time: Mar 07 13:43 MSK
+Output:
+----------------------------------------------------------
+Note: Google Test filter = FComparisons.equal
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from FComparisons
+[ RUN      ] FComparisons.equal
+[       OK ] FComparisons.equal (0 ms)
+[----------] 1 test from FComparisons (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"FComparisons.equal" end time: Mar 07 13:43 MSK
+"FComparisons.equal" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/11 Testing: FComparisons.not_equal
+2/11 Test: FComparisons.not_equal
+Command: "/home/alex/repo/kmmc/22_02_long_numbers/build/test/long_number_test" "--gtest_filter=FComparisons.not_equal" "--gtest_also_run_disabled_tests"
+Directory: /home/alex/repo/kmmc/22_02_long_numbers/build/test
+"FComparisons.not_equal" start time: Mar 07 13:43 MSK
+Output:
+----------------------------------------------------------
+Note: Google Test filter = FComparisons.not_equal
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from FComparisons
+[ RUN      ] FComparisons.not_equal
+[       OK ] FComparisons.not_equal (0 ms)
+[----------] 1 test from FComparisons (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"FComparisons.not_equal" end time: Mar 07 13:43 MSK
+"FComparisons.not_equal" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/11 Testing: FComparisons.more
+3/11 Test: FComparisons.more
+Command: "/home/alex/repo/kmmc/22_02_long_numbers/build/test/long_number_test" "--gtest_filter=FComparisons.more" "--gtest_also_run_disabled_tests"
+Directory: /home/alex/repo/kmmc/22_02_long_numbers/build/test
+"FComparisons.more" start time: Mar 07 13:43 MSK
+Output:
+----------------------------------------------------------
+Note: Google Test filter = FComparisons.more
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from FComparisons
+[ RUN      ] FComparisons.more
+[       OK ] FComparisons.more (0 ms)
+[----------] 1 test from FComparisons (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"FComparisons.more" end time: Mar 07 13:43 MSK
+"FComparisons.more" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/11 Testing: FComparisons.less
+4/11 Test: FComparisons.less
+Command: "/home/alex/repo/kmmc/22_02_long_numbers/build/test/long_number_test" "--gtest_filter=FComparisons.less" "--gtest_also_run_disabled_tests"
+Directory: /home/alex/repo/kmmc/22_02_long_numbers/build/test
+"FComparisons.less" start time: Mar 07 13:43 MSK
+Output:
+----------------------------------------------------------
+Note: Google Test filter = FComparisons.less
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from FComparisons
+[ RUN      ] FComparisons.less
+[       OK ] FComparisons.less (0 ms)
+[----------] 1 test from FComparisons (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"FComparisons.less" end time: Mar 07 13:43 MSK
+"FComparisons.less" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/11 Testing: FArithmetic.summ
+5/11 Test: FArithmetic.summ
+Command: "/home/alex/repo/kmmc/22_02_long_numbers/build/test/long_number_test" "--gtest_filter=FArithmetic.summ" "--gtest_also_run_disabled_tests"
+Directory: /home/alex/repo/kmmc/22_02_long_numbers/build/test
+"FArithmetic.summ" start time: Mar 07 13:43 MSK
+Output:
+----------------------------------------------------------
+Note: Google Test filter = FArithmetic.summ
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from FArithmetic
+[ RUN      ] FArithmetic.summ
+[       OK ] FArithmetic.summ (0 ms)
+[----------] 1 test from FArithmetic (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"FArithmetic.summ" end time: Mar 07 13:43 MSK
+"FArithmetic.summ" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/11 Testing: FArithmetic.substraction
+6/11 Test: FArithmetic.substraction
+Command: "/home/alex/repo/kmmc/22_02_long_numbers/build/test/long_number_test" "--gtest_filter=FArithmetic.substraction" "--gtest_also_run_disabled_tests"
+Directory: /home/alex/repo/kmmc/22_02_long_numbers/build/test
+"FArithmetic.substraction" start time: Mar 07 13:43 MSK
+Output:
+----------------------------------------------------------
+Note: Google Test filter = FArithmetic.substraction
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from FArithmetic
+[ RUN      ] FArithmetic.substraction
+[       OK ] FArithmetic.substraction (0 ms)
+[----------] 1 test from FArithmetic (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"FArithmetic.substraction" end time: Mar 07 13:43 MSK
+"FArithmetic.substraction" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/11 Testing: FArithmetic.multiply
+7/11 Test: FArithmetic.multiply
+Command: "/home/alex/repo/kmmc/22_02_long_numbers/build/test/long_number_test" "--gtest_filter=FArithmetic.multiply" "--gtest_also_run_disabled_tests"
+Directory: /home/alex/repo/kmmc/22_02_long_numbers/build/test
+"FArithmetic.multiply" start time: Mar 07 13:43 MSK
+Output:
+----------------------------------------------------------
+Note: Google Test filter = FArithmetic.multiply
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from FArithmetic
+[ RUN      ] FArithmetic.multiply
+[       OK ] FArithmetic.multiply (0 ms)
+[----------] 1 test from FArithmetic (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"FArithmetic.multiply" end time: Mar 07 13:43 MSK
+"FArithmetic.multiply" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/11 Testing: FArithmetic.division
+8/11 Test: FArithmetic.division
+Command: "/home/alex/repo/kmmc/22_02_long_numbers/build/test/long_number_test" "--gtest_filter=FArithmetic.division" "--gtest_also_run_disabled_tests"
+Directory: /home/alex/repo/kmmc/22_02_long_numbers/build/test
+"FArithmetic.division" start time: Mar 07 13:43 MSK
+Output:
+----------------------------------------------------------
+Note: Google Test filter = FArithmetic.division
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from FArithmetic
+[ RUN      ] FArithmetic.division
+[       OK ] FArithmetic.division (0 ms)
+[----------] 1 test from FArithmetic (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"FArithmetic.division" end time: Mar 07 13:43 MSK
+"FArithmetic.division" time elapsed: 00:00:00
+----------------------------------------------------------
+
+9/11 Testing: FArithmetic.division_full_sign_example
+9/11 Test: FArithmetic.division_full_sign_example
+Command: "/home/alex/repo/kmmc/22_02_long_numbers/build/test/long_number_test" "--gtest_filter=FArithmetic.division_full_sign_example" "--gtest_also_run_disabled_tests"
+Directory: /home/alex/repo/kmmc/22_02_long_numbers/build/test
+"FArithmetic.division_full_sign_example" start time: Mar 07 13:43 MSK
+Output:
+----------------------------------------------------------
+Note: Google Test filter = FArithmetic.division_full_sign_example
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from FArithmetic
+[ RUN      ] FArithmetic.division_full_sign_example
+[       OK ] FArithmetic.division_full_sign_example (0 ms)
+[----------] 1 test from FArithmetic (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"FArithmetic.division_full_sign_example" end time: Mar 07 13:43 MSK
+"FArithmetic.division_full_sign_example" time elapsed: 00:00:00
+----------------------------------------------------------
+
+10/11 Testing: FArithmetic.remainder
+10/11 Test: FArithmetic.remainder
+Command: "/home/alex/repo/kmmc/22_02_long_numbers/build/test/long_number_test" "--gtest_filter=FArithmetic.remainder" "--gtest_also_run_disabled_tests"
+Directory: /home/alex/repo/kmmc/22_02_long_numbers/build/test
+"FArithmetic.remainder" start time: Mar 07 13:43 MSK
+Output:
+----------------------------------------------------------
+Note: Google Test filter = FArithmetic.remainder
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from FArithmetic
+[ RUN      ] FArithmetic.remainder
+[       OK ] FArithmetic.remainder (0 ms)
+[----------] 1 test from FArithmetic (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"FArithmetic.remainder" end time: Mar 07 13:43 MSK
+"FArithmetic.remainder" time elapsed: 00:00:00
+----------------------------------------------------------
+
+11/11 Testing: FArithmetic.remainder_full_sign_example
+11/11 Test: FArithmetic.remainder_full_sign_example
+Command: "/home/alex/repo/kmmc/22_02_long_numbers/build/test/long_number_test" "--gtest_filter=FArithmetic.remainder_full_sign_example" "--gtest_also_run_disabled_tests"
+Directory: /home/alex/repo/kmmc/22_02_long_numbers/build/test
+"FArithmetic.remainder_full_sign_example" start time: Mar 07 13:43 MSK
+Output:
+----------------------------------------------------------
+Note: Google Test filter = FArithmetic.remainder_full_sign_example
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from FArithmetic
+[ RUN      ] FArithmetic.remainder_full_sign_example
+[       OK ] FArithmetic.remainder_full_sign_example (0 ms)
+[----------] 1 test from FArithmetic (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"FArithmetic.remainder_full_sign_example" end time: Mar 07 13:43 MSK
+"FArithmetic.remainder_full_sign_example" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Mar 07 13:43 MSK

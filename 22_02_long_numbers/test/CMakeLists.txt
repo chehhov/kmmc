@@ -1,21 +1,14 @@
-add_executable(long_number_tests
-    long_number_tests.cpp
-)
+include(FetchContent)
 
-target_link_libraries(long_number_tests
-    PRIVATE
-    long_number_lib
+FetchContent_Declare(
+    googletest
+    GIT_REPOSITORY https://github.com/google/googletest.git  
+    GIT_TAG release-1.12.1
 )
+FetchContent_MakeAvailable(googletest)
 
-target_include_directories(long_number_tests PRIVATE
-    ${CMAKE_SOURCE_DIR}/src
-)
+add_executable(long_number_test long_number_tests.cpp)
+target_link_libraries(long_number_test PRIVATE long_number GTest::gtest_main)
 
-add_custom_target(run_tests
-    COMMAND long_number_tests
-    DEPENDS long_number_tests
-    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-)
-
-include(CTest)
-add_test(NAME LongNumberTests COMMAND long_number_tests)
+include(GoogleTest)
+gtest_discover_tests(long_number_test)

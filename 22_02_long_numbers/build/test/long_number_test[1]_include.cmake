@@ -1,0 +1,5 @@
+if(EXISTS "/home/alex/repo/kmmc/22_02_long_numbers/build/test/long_number_test[1]_tests.cmake")
+  include("/home/alex/repo/kmmc/22_02_long_numbers/build/test/long_number_test[1]_tests.cmake")
+else()
+  add_test(long_number_test_NOT_BUILT long_number_test_NOT_BUILT)
+endif()

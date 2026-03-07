@@ -11,6 +11,16 @@ LongNumber::LongNumber() {
 	numbers[0] = 0;
 }
 
+LongNumber::LongNumber(const int a) {
+	sign = 1;
+	if (a < 0) {
+		sign = -1;
+	}
+	length = 1;
+	numbers = new int[1];
+	numbers[0] = x;
+}
+
 LongNumber::LongNumber(int length, int sign) {
     this->sign = sign;
     this->length = length;
@@ -135,7 +145,6 @@ bool LongNumber::operator == (const LongNumber& x) const {
             return false;
         }
     }
-    
     return true;
 }
 
@@ -144,24 +153,24 @@ bool LongNumber::operator != (const LongNumber& x) const {
 }
 
 bool LongNumber::operator > (const LongNumber& x) const {
-    if (sign > x.sign) return true; 
-    if (sign < x.sign) return false;
+    if (sign > x.sign) {return true; }
+    if (sign < x.sign) {return false;}
     
     if (sign == 1) {
-        if (length > x.length) return true;
-        if (length < x.length) return false;
+        if (length > x.length) {return true;}
+        if (length < x.length) {return false;}
         
         for (int i = 0; i < length; i++) {
-            if (numbers[i] > x.numbers[i]) return true;
-            if (numbers[i] < x.numbers[i]) return false;
+            if (numbers[i] > x.numbers[i]) {return true;}
+		if (numbers[i] < x.numbers[i]) {return false;}
         }
     } else {
-        if (length > x.length) return false;
-        if (length < x.length) return true;
+        if (length > x.length) {return false;
+		if (length < x.length) {return true;}
         
         for (int i = 0; i < length; i++) {
-            if (numbers[i] > x.numbers[i]) return false;
-            if (numbers[i] < x.numbers[i]) return true;
+            if (numbers[i] > x.numbers[i]) {return false;}
+            if (numbers[i] < x.numbers[i]) {return true;}
         }
     }
     
@@ -365,9 +374,9 @@ LongNumber LongNumber::operator * (const LongNumber& x) const {
     
     return result;
 }
-LongNumber LongNumber::operator/(const LongNumber& x) const {
+LongNumber LongNumber::operator / (const LongNumber& x) const {
     if (x.length == 1 && x.numbers[0] == 0) {
-        throw std::domain_error("Division by zero");
+        std::cout << "Ошибка!" << std::endl;
     }
     
     int result_sign = (sign == x.sign) ? 1 : -1;
@@ -378,7 +387,7 @@ LongNumber LongNumber::operator/(const LongNumber& x) const {
     divisor.sign = 1;
 
     if (dividend < divisor) {
-        return LongNumber("0");
+        return 0;
     }
     
     if (dividend == divisor) {
@@ -413,7 +422,7 @@ LongNumber LongNumber::operator/(const LongNumber& x) const {
         
         int digit = 0;
         for (int d = 9; d >= 0; --d) {
-            LongNumber product = divisor * LongNumber(std::to_string(d).c_str());
+            LongNumber product = divisor * d;
             if (product < remainder || product == remainder) {
                 digit = d;
                 remainder = remainder - product;
@@ -444,6 +453,14 @@ LongNumber LongNumber::operator/(const LongNumber& x) const {
     
     quotient.sign = result_sign;
 
+    if (sign == -1 && !(remainder.length == 1 && remainder.numbers[0] == 0)) {
+        if (x.sign == -1) {
+            quotient = quotient + LongNumber("1");
+        } else {
+            quotient = quotient - LongNumber("1");
+        }
+    }
+
     if (quotient.length == 1 && quotient.numbers[0] == 0) {
         quotient.sign = 1;
     }
@@ -451,24 +468,9 @@ LongNumber LongNumber::operator/(const LongNumber& x) const {
     return quotient;
 }
 
-LongNumber LongNumber::operator%(const LongNumber& x) const {
-    if (x.length == 1 && x.numbers[0] == 0) {
-        throw std::domain_error("Modulo by zero");
-    }
-
-    LongNumber quotient = *this / x;
-    LongNumber product = quotient * x;
-    LongNumber remainder = *this - product;
-    
-    remainder.sign = sign;
-    
-    if (remainder.length == 1 && remainder.numbers[0] == 0) {
-        remainder.sign = 1;
-    }
-    
-    return remainder;
+LongNumber LongNumber::operator % (const LongNumber& x) const {
+    return *this - *this / x * x;
 }
-
 
 
 bool LongNumber::is_negative() const noexcept {

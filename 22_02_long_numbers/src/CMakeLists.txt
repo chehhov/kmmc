@@ -1,13 +1,5 @@
-add_library(long_number_lib STATIC
+add_library(long_number 
     long_number.cpp
 )
 
-
-target_include_directories(long_number_lib PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}
-)
-
-set_target_properties(long_number_lib PROPERTIES
-    OUTPUT_NAME "longnumber"
-    CLEAN_DIRECT_OUTPUT 1
-)
+target_include_directories(long_number PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
