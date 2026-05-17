@@ -189,6 +189,9 @@ void HorizonMoveMAp(float dx) {
 	
 	for (int i = 0; i < brickLength; i++) 
 		brick[i].x += dx;
+	
+	for (int i = 0; i < movingLength; i++) 
+        moving[i].x += dx;
 }
 
 bool IsCollision(TObject o1, TObject o2) {
@@ -284,7 +287,10 @@ void CreateLevel(int lvl) {
 int main() {
 	CreateLevel(level);
 	struct termios oldt, newt; tcgetattr(STDIN_FILENO,&oldt); newt=oldt; newt.c_lflag&=~(ICANON|ECHO); newt.c_cc[VMIN]=0; newt.c_cc[VTIME]=0; tcsetattr(STDIN_FILENO,TCSANOW,&newt);
+	
 	printf("\033[44m\033[2J");
+	printf("\033[?25l"); fflush(stdout);
+	
 	do {
 		ClearMap();
 		
@@ -319,5 +325,6 @@ int main() {
 	} while (1);
 	
 	tcsetattr(STDIN_FILENO,TCSANOW,&oldt);
+	printf("\033[?25h"); fflush(stdout);
 	return 0;
 }
