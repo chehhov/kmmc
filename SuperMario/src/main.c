@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>’?
+
 
 #include <math.h>
 #include <termios.h>
@@ -13,6 +15,7 @@
 typedef struct SObject {
 	float x, y;
 	float width, height;
+	float vertSpeed;
 } TObject;
 
 char map[mapHeight][mapWidth+1];
@@ -41,6 +44,16 @@ void InitObject(TObject *obj, float xPos, float yPos, float oWidth, float oHeigh
 	SetObjectPos(obj, xPos, yPos);
 	(*obj).width = oWidth;
 	(*obj).height = oHeight;
+	(*obj).vertSpeed = 0;
+}
+
+void VertMoveObject(TObject *obj) {
+	(*obj).vertSpeed += 0.05;
+	SetObjectPos(obj, (*obj).x, (*obj).y + (*obj).vertSpeed);
+}
+
+bool IsPosInMap(int x, int y) {
+	return ( (x >= 0) && (x < mapWidth) && (y >= 0) && (y < mapHeight) );
 }
 
 void PutObjectOnMap(TObject obj) {
@@ -51,7 +64,8 @@ void PutObjectOnMap(TObject obj) {
 	
 	for (int i = ix; i < (ix + iWidth); i++) 
 		for (int j = iy; j < (iy + iHeight); j++) 
-			map[j][i] = '@';
+			if (IsPosInMap(i, j))
+				map[j][i] = '@';
 }
 
 void setCur(int x, int y) {
@@ -65,10 +79,12 @@ int main() {
 	struct termios oldt, newt; tcgetattr(STDIN_FILENO,&oldt); newt=oldt; newt.c_lflag&=~(ICANON|ECHO); newt.c_cc[VMIN]=0; newt.c_cc[VTIME]=0; tcsetattr(STDIN_FILENO,TCSANOW,&newt);
 	do {
 		ClearMap();
+		VertMoveObject(&mario);
 		PutObjectOnMap(mario);
 		
 		setCur(0, 0);
 		ShowMap();
+		usleep(100000);
 		{ fd_set f; struct timeval t={0,10000}; FD_ZERO(&f); FD_SET(0,&f); select(1,&f,0,0,&t); char c; if(read(0,&c,1)==1 && c==27) break; }
 	} while (1);
 	
