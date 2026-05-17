@@ -84,12 +84,30 @@ void VertMoveObject(TObject *obj) {
 		}
 }
 
+void DeleteMoving(int i) {
+	movingLength--;
+	moving[i] = moving[movingLength];
+	moving = realloc( moving, sizeof(*moving) * movingLength );
+}
+
+
 void MarioCollision() {
 	for (int i = 0; i < movingLength; i++)
 		if (IsCollision( mario, moving[i])) {
-			CreateLevel(level);
+			if (       (mario.IsFly == true)
+				&&  (mario.vertSpeed > 0)
+				&&  (  mario.y + mario.height < moving[i].y + moving[i].height * 0.5 )
+				)
+				{
+					DeleteMoving(i);
+					i--;
+					continue;
+				}
+				else
+						CreateLevel(level);
+		
 		}
-}
+} 
 
 void HorizonMoveObject(TObject *obj) {
 	obj[0].x += obj[0].horizSpeed;
