@@ -214,7 +214,7 @@ void PutScoreOnMap() {
 	sprintf(c, "Score: %d", score);
 	int len = strlen(c);
 	for (int i = 0; i < len; i++) {
-		map[i][i+5] = c[i];
+		map[0][i+5] = c[i];
 	}
 }
 
