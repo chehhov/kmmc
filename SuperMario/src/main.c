@@ -20,6 +20,7 @@ typedef struct SObject {
 
 char map[mapHeight][mapWidth+1];
 TObject mario;
+TObject brick[1];
 
 void ClearMap() {
     for (int i = 0; i < mapWidth; i++)
@@ -47,9 +48,15 @@ void InitObject(TObject *obj, float xPos, float yPos, float oWidth, float oHeigh
 	(*obj).vertSpeed = 0;
 }
 
+bool IsCollision(TObject o1, TObject o2);
+
 void VertMoveObject(TObject *obj) {
 	(*obj).vertSpeed += 0.05;
 	SetObjectPos(obj, (*obj).x, (*obj).y + (*obj).vertSpeed);
+	if (IsCollision( *obj, brick[0])) {
+		(*obj).y -= (*obj).vertSpeed;
+		(*obj).vertSpeed = 0;
+	}
 }
 
 bool IsPosInMap(int x, int y) {
@@ -73,13 +80,19 @@ void setCur(int x, int y) {
     fflush(stdout);
 }
 
+bool IsCollision(TObject o1, TObject o2) {
+	return (( o1.x + o1.width) > o2.x) && (o1.x < (o2.x + o2.width)) &&
+				((o1.y + o1.height) > o2.y) && (o1.y < (o2.y + o2.height)) ;
+}
+
 int main() {
 	InitObject(&mario, 39, 10, 3, 3);
-	
+	InitObject(brick, 20, 20, 40, 5);
 	struct termios oldt, newt; tcgetattr(STDIN_FILENO,&oldt); newt=oldt; newt.c_lflag&=~(ICANON|ECHO); newt.c_cc[VMIN]=0; newt.c_cc[VTIME]=0; tcsetattr(STDIN_FILENO,TCSANOW,&newt);
 	do {
 		ClearMap();
 		VertMoveObject(&mario);
+		PutObjectOnMap(brick[0]);
 		PutObjectOnMap(mario);
 		
 		setCur(0, 0);
