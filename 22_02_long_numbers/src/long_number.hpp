@@ -11,6 +11,7 @@ namespace lae {
 		
 		public:
 			LongNumber();
+			LongNumber(const int a);
 			LongNumber(int length, int sign);
 			LongNumber(const char* const str);
 			LongNumber(const LongNumber& x);

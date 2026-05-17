@@ -12,13 +12,37 @@ LongNumber::LongNumber() {
 }
 
 LongNumber::LongNumber(const int a) {
-	sign = 1;
-	if (a < 0) {
-		sign = -1;
-	}
-	length = 1;
-	numbers = new int[1];
-	numbers[0] = x;
+    int temp = a;
+    
+    if (temp < 0) {
+        sign = -1;
+        temp = -temp; 
+    } else {
+        sign = 1;
+    }
+    
+    if (temp == 0) {
+        length = 1;
+        numbers = new int[1];
+        numbers[0] = 0;
+        return;
+    }
+    
+    int temp_len = 0;
+    int t = temp;
+    while (t > 0) {
+        temp_len++;
+        t /= 10;
+    }
+    
+    length = temp_len;
+    numbers = new int[length];
+    
+
+    for (int i = length - 1; i >= 0; i--) {
+        numbers[i] = temp % 10;
+        temp /= 10;
+    }
 }
 
 LongNumber::LongNumber(int length, int sign) {
@@ -165,7 +189,7 @@ bool LongNumber::operator > (const LongNumber& x) const {
 		if (numbers[i] < x.numbers[i]) {return false;}
         }
     } else {
-        if (length > x.length) {return false;
+        if (length > x.length) {return false;}
 		if (length < x.length) {return true;}
         
         for (int i = 0; i < length; i++) {

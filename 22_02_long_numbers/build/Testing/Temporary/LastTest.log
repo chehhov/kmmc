@@ -1,10 +1,10 @@
-Start testing: Mar 07 13:43 MSK
+Start testing: Mar 07 14:43 MSK
 ----------------------------------------------------------
 1/11 Testing: FComparisons.equal
 1/11 Test: FComparisons.equal
 Command: "/home/alex/repo/kmmc/22_02_long_numbers/build/test/long_number_test" "--gtest_filter=FComparisons.equal" "--gtest_also_run_disabled_tests"
 Directory: /home/alex/repo/kmmc/22_02_long_numbers/build/test
-"FComparisons.equal" start time: Mar 07 13:43 MSK
+"FComparisons.equal" start time: Mar 07 14:43 MSK
 Output:
 ----------------------------------------------------------
 Note: Google Test filter = FComparisons.equal
@@ -19,10 +19,10 @@ Note: Google Test filter = FComparisons.equal
 [==========] 1 test from 1 test suite ran. (0 ms total)
 [  PASSED  ] 1 test.
 <end of output>
-Test time =   0.00 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"FComparisons.equal" end time: Mar 07 13:43 MSK
+"FComparisons.equal" end time: Mar 07 14:43 MSK
 "FComparisons.equal" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -30,7 +30,7 @@ Test Passed.
 2/11 Test: FComparisons.not_equal
 Command: "/home/alex/repo/kmmc/22_02_long_numbers/build/test/long_number_test" "--gtest_filter=FComparisons.not_equal" "--gtest_also_run_disabled_tests"
 Directory: /home/alex/repo/kmmc/22_02_long_numbers/build/test
-"FComparisons.not_equal" start time: Mar 07 13:43 MSK
+"FComparisons.not_equal" start time: Mar 07 14:43 MSK
 Output:
 ----------------------------------------------------------
 Note: Google Test filter = FComparisons.not_equal
@@ -45,10 +45,10 @@ Note: Google Test filter = FComparisons.not_equal
 [==========] 1 test from 1 test suite ran. (0 ms total)
 [  PASSED  ] 1 test.
 <end of output>
-Test time =   0.00 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"FComparisons.not_equal" end time: Mar 07 13:43 MSK
+"FComparisons.not_equal" end time: Mar 07 14:43 MSK
 "FComparisons.not_equal" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -56,7 +56,7 @@ Test Passed.
 3/11 Test: FComparisons.more
 Command: "/home/alex/repo/kmmc/22_02_long_numbers/build/test/long_number_test" "--gtest_filter=FComparisons.more" "--gtest_also_run_disabled_tests"
 Directory: /home/alex/repo/kmmc/22_02_long_numbers/build/test
-"FComparisons.more" start time: Mar 07 13:43 MSK
+"FComparisons.more" start time: Mar 07 14:43 MSK
 Output:
 ----------------------------------------------------------
 Note: Google Test filter = FComparisons.more
@@ -71,10 +71,10 @@ Note: Google Test filter = FComparisons.more
 [==========] 1 test from 1 test suite ran. (0 ms total)
 [  PASSED  ] 1 test.
 <end of output>
-Test time =   0.00 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"FComparisons.more" end time: Mar 07 13:43 MSK
+"FComparisons.more" end time: Mar 07 14:43 MSK
 "FComparisons.more" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -82,7 +82,7 @@ Test Passed.
 4/11 Test: FComparisons.less
 Command: "/home/alex/repo/kmmc/22_02_long_numbers/build/test/long_number_test" "--gtest_filter=FComparisons.less" "--gtest_also_run_disabled_tests"
 Directory: /home/alex/repo/kmmc/22_02_long_numbers/build/test
-"FComparisons.less" start time: Mar 07 13:43 MSK
+"FComparisons.less" start time: Mar 07 14:43 MSK
 Output:
 ----------------------------------------------------------
 Note: Google Test filter = FComparisons.less
@@ -100,7 +100,7 @@ Note: Google Test filter = FComparisons.less
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"FComparisons.less" end time: Mar 07 13:43 MSK
+"FComparisons.less" end time: Mar 07 14:43 MSK
 "FComparisons.less" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -108,7 +108,7 @@ Test Passed.
 5/11 Test: FArithmetic.summ
 Command: "/home/alex/repo/kmmc/22_02_long_numbers/build/test/long_number_test" "--gtest_filter=FArithmetic.summ" "--gtest_also_run_disabled_tests"
 Directory: /home/alex/repo/kmmc/22_02_long_numbers/build/test
-"FArithmetic.summ" start time: Mar 07 13:43 MSK
+"FArithmetic.summ" start time: Mar 07 14:43 MSK
 Output:
 ----------------------------------------------------------
 Note: Google Test filter = FArithmetic.summ
@@ -126,7 +126,7 @@ Note: Google Test filter = FArithmetic.summ
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"FArithmetic.summ" end time: Mar 07 13:43 MSK
+"FArithmetic.summ" end time: Mar 07 14:43 MSK
 "FArithmetic.summ" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -134,7 +134,7 @@ Test Passed.
 6/11 Test: FArithmetic.substraction
 Command: "/home/alex/repo/kmmc/22_02_long_numbers/build/test/long_number_test" "--gtest_filter=FArithmetic.substraction" "--gtest_also_run_disabled_tests"
 Directory: /home/alex/repo/kmmc/22_02_long_numbers/build/test
-"FArithmetic.substraction" start time: Mar 07 13:43 MSK
+"FArithmetic.substraction" start time: Mar 07 14:43 MSK
 Output:
 ----------------------------------------------------------
 Note: Google Test filter = FArithmetic.substraction
@@ -152,7 +152,7 @@ Note: Google Test filter = FArithmetic.substraction
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"FArithmetic.substraction" end time: Mar 07 13:43 MSK
+"FArithmetic.substraction" end time: Mar 07 14:43 MSK
 "FArithmetic.substraction" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -160,7 +160,7 @@ Test Passed.
 7/11 Test: FArithmetic.multiply
 Command: "/home/alex/repo/kmmc/22_02_long_numbers/build/test/long_number_test" "--gtest_filter=FArithmetic.multiply" "--gtest_also_run_disabled_tests"
 Directory: /home/alex/repo/kmmc/22_02_long_numbers/build/test
-"FArithmetic.multiply" start time: Mar 07 13:43 MSK
+"FArithmetic.multiply" start time: Mar 07 14:43 MSK
 Output:
 ----------------------------------------------------------
 Note: Google Test filter = FArithmetic.multiply
@@ -178,7 +178,7 @@ Note: Google Test filter = FArithmetic.multiply
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"FArithmetic.multiply" end time: Mar 07 13:43 MSK
+"FArithmetic.multiply" end time: Mar 07 14:43 MSK
 "FArithmetic.multiply" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -186,7 +186,7 @@ Test Passed.
 8/11 Test: FArithmetic.division
 Command: "/home/alex/repo/kmmc/22_02_long_numbers/build/test/long_number_test" "--gtest_filter=FArithmetic.division" "--gtest_also_run_disabled_tests"
 Directory: /home/alex/repo/kmmc/22_02_long_numbers/build/test
-"FArithmetic.division" start time: Mar 07 13:43 MSK
+"FArithmetic.division" start time: Mar 07 14:43 MSK
 Output:
 ----------------------------------------------------------
 Note: Google Test filter = FArithmetic.division
@@ -204,7 +204,7 @@ Note: Google Test filter = FArithmetic.division
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"FArithmetic.division" end time: Mar 07 13:43 MSK
+"FArithmetic.division" end time: Mar 07 14:43 MSK
 "FArithmetic.division" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -212,7 +212,7 @@ Test Passed.
 9/11 Test: FArithmetic.division_full_sign_example
 Command: "/home/alex/repo/kmmc/22_02_long_numbers/build/test/long_number_test" "--gtest_filter=FArithmetic.division_full_sign_example" "--gtest_also_run_disabled_tests"
 Directory: /home/alex/repo/kmmc/22_02_long_numbers/build/test
-"FArithmetic.division_full_sign_example" start time: Mar 07 13:43 MSK
+"FArithmetic.division_full_sign_example" start time: Mar 07 14:43 MSK
 Output:
 ----------------------------------------------------------
 Note: Google Test filter = FArithmetic.division_full_sign_example
@@ -230,7 +230,7 @@ Note: Google Test filter = FArithmetic.division_full_sign_example
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"FArithmetic.division_full_sign_example" end time: Mar 07 13:43 MSK
+"FArithmetic.division_full_sign_example" end time: Mar 07 14:43 MSK
 "FArithmetic.division_full_sign_example" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -238,7 +238,7 @@ Test Passed.
 10/11 Test: FArithmetic.remainder
 Command: "/home/alex/repo/kmmc/22_02_long_numbers/build/test/long_number_test" "--gtest_filter=FArithmetic.remainder" "--gtest_also_run_disabled_tests"
 Directory: /home/alex/repo/kmmc/22_02_long_numbers/build/test
-"FArithmetic.remainder" start time: Mar 07 13:43 MSK
+"FArithmetic.remainder" start time: Mar 07 14:43 MSK
 Output:
 ----------------------------------------------------------
 Note: Google Test filter = FArithmetic.remainder
@@ -256,7 +256,7 @@ Note: Google Test filter = FArithmetic.remainder
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"FArithmetic.remainder" end time: Mar 07 13:43 MSK
+"FArithmetic.remainder" end time: Mar 07 14:43 MSK
 "FArithmetic.remainder" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -264,7 +264,7 @@ Test Passed.
 11/11 Test: FArithmetic.remainder_full_sign_example
 Command: "/home/alex/repo/kmmc/22_02_long_numbers/build/test/long_number_test" "--gtest_filter=FArithmetic.remainder_full_sign_example" "--gtest_also_run_disabled_tests"
 Directory: /home/alex/repo/kmmc/22_02_long_numbers/build/test
-"FArithmetic.remainder_full_sign_example" start time: Mar 07 13:43 MSK
+"FArithmetic.remainder_full_sign_example" start time: Mar 07 14:43 MSK
 Output:
 ----------------------------------------------------------
 Note: Google Test filter = FArithmetic.remainder_full_sign_example
@@ -282,8 +282,8 @@ Note: Google Test filter = FArithmetic.remainder_full_sign_example
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"FArithmetic.remainder_full_sign_example" end time: Mar 07 13:43 MSK
+"FArithmetic.remainder_full_sign_example" end time: Mar 07 14:43 MSK
 "FArithmetic.remainder_full_sign_example" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Mar 07 13:43 MSK
+End testing: Mar 07 14:43 MSK

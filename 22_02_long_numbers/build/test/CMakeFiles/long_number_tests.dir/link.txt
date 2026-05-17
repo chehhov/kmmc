@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/long_number_tests.dir/long_number_tests.cpp.o -o long_number_tests  ../src/liblongnumber.a 
