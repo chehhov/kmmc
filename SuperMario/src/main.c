@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>’?
+#include <stdbool.h> 
 
 
 #include <math.h>
@@ -16,11 +16,13 @@ typedef struct SObject {
 	float x, y;
 	float width, height;
 	float vertSpeed;
+	bool IsFly;
 } TObject;
 
 char map[mapHeight][mapWidth+1];
 TObject mario;
-TObject brick[1];
+TObject *brick = NULL;
+int brickLength;
 
 void ClearMap() {
     for (int i = 0; i < mapWidth; i++)
@@ -51,12 +53,17 @@ void InitObject(TObject *obj, float xPos, float yPos, float oWidth, float oHeigh
 bool IsCollision(TObject o1, TObject o2);
 
 void VertMoveObject(TObject *obj) {
+	(*obj).IsFly = true;
 	(*obj).vertSpeed += 0.05;
 	SetObjectPos(obj, (*obj).x, (*obj).y + (*obj).vertSpeed);
-	if (IsCollision( *obj, brick[0])) {
-		(*obj).y -= (*obj).vertSpeed;
-		(*obj).vertSpeed = 0;
-	}
+	
+	for (int i = 0; i < brickLength; i++)
+		if (IsCollision( *obj, brick[i])) {
+			(*obj).y -= (*obj).vertSpeed;
+			(*obj).vertSpeed = 0;
+			(*obj).IsFly = false;
+			break;
+		}
 }
 
 bool IsPosInMap(int x, int y) {
@@ -80,24 +87,53 @@ void setCur(int x, int y) {
     fflush(stdout);
 }
 
+void HorizonMoveMAp(float dx) {
+	mario.x -= dx;
+	for (int i = 0; i < brickLength; i++) 
+		if (IsCollision(mario, brick[i])) {
+			mario.x += dx;
+			return;
+			
+		}
+	mario.x += dx;
+	
+	for (int i = 0; i < brickLength; i++) 
+		brick[i].x += dx;
+}
+
 bool IsCollision(TObject o1, TObject o2) {
 	return (( o1.x + o1.width) > o2.x) && (o1.x < (o2.x + o2.width)) &&
 				((o1.y + o1.height) > o2.y) && (o1.y < (o2.y + o2.height)) ;
 }
 
-int main() {
+void ClearLevel() {
 	InitObject(&mario, 39, 10, 3, 3);
-	InitObject(brick, 20, 20, 40, 5);
+	
+	brickLength = 5;
+	brick = malloc( sizeof(*brick) * brickLength );
+	InitObject(brick+0, 20, 20, 40, 5);
+	InitObject(brick+1, 60, 15, 10, 10);
+	InitObject(brick+2, 80, 20, 20, 5);
+	InitObject(brick+3, 120, 15, 10, 10);
+	InitObject(brick+4, 150, 20, 40, 5);
+}
+
+int main() {
+	ClearLevel();
 	struct termios oldt, newt; tcgetattr(STDIN_FILENO,&oldt); newt=oldt; newt.c_lflag&=~(ICANON|ECHO); newt.c_cc[VMIN]=0; newt.c_cc[VTIME]=0; tcsetattr(STDIN_FILENO,TCSANOW,&newt);
 	do {
 		ClearMap();
+		
+		{ fd_set f; struct timeval t={0,1000}; FD_ZERO(&f); FD_SET(0,&f); select(1,&f,0,0,&t); char c; if(read(0,&c,1)==1) { if(c==27) break; if(c==' ') mario.vertSpeed=-0.7; if(c=='a'||c=='A') HorizonMoveMAp(1); if(c=='d'||c=='D') HorizonMoveMAp(-1); } }
+		
 		VertMoveObject(&mario);
-		PutObjectOnMap(brick[0]);
+		for (int i = 0; i < brickLength; i++)
+			PutObjectOnMap(brick[i]);
 		PutObjectOnMap(mario);
 		
 		setCur(0, 0);
 		ShowMap();
-		usleep(100000);
+		usleep(10000);
 		{ fd_set f; struct timeval t={0,10000}; FD_ZERO(&f); FD_SET(0,&f); select(1,&f,0,0,&t); char c; if(read(0,&c,1)==1 && c==27) break; }
 	} while (1);
 	
