@@ -148,7 +148,7 @@ int main() {
 	do {
 		ClearMap();
 		
-		{ fd_set f; struct timeval t={0,1000}; FD_ZERO(&f); FD_SET(0,&f); select(1,&f,0,0,&t); char c; if(read(0,&c,1)==1) { if(c==27) break; if(c==' ') mario.vertSpeed=-0.7; if(c=='a'||c=='A') HorizonMoveMAp(1); if(c=='d'||c=='D') HorizonMoveMAp(-1); } }
+		{ fd_set f; struct timeval t={0,16000}; FD_ZERO(&f); FD_SET(0,&f); select(1,&f,0,0,&t); char c; if(read(0,&c,1)==1) { if(c==27) break; if(c==' ') mario.vertSpeed=-1; if(c=='a'||c=='A') HorizonMoveMAp(2); if(c=='d'||c=='D') HorizonMoveMAp(-2); } }
 		
 		if (mario.y > mapHeight) CreateLevel(level);
 		
@@ -159,7 +159,6 @@ int main() {
 		
 		setCur(0, 0);
 		ShowMap();
-		usleep(10000);
 		{ fd_set f; struct timeval t={0,10000}; FD_ZERO(&f); FD_SET(0,&f); select(1,&f,0,0,&t); char c; if(read(0,&c,1)==1 && c==27) break; }
 	} while (1);
 	
