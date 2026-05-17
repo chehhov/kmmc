@@ -64,8 +64,10 @@ void InitObject(TObject *obj, float xPos, float yPos, float oWidth, float oHeigh
 }
 
 void PlayerDead() {
-	usleep(1000000);
-	CreateLevel(level);
+    printf("\033[41m\033[2J"); fflush(stdout);
+    usleep(500000);
+    printf("\033[44m\033[2J"); fflush(stdout);
+    CreateLevel(level);
 }
 
 bool IsCollision(TObject o1, TObject o2);
@@ -95,6 +97,11 @@ void VertMoveObject(TObject *obj) {
 			if (brick[i].cType == '+') {
 				level++;
 				if (level > maxLvl) level = 1;
+				
+				printf("\033[42m\033[2J"); fflush(stdout);
+				usleep(500000);
+				printf("\033[44m\033[2J"); fflush(stdout); 
+				
 				CreateLevel(level);
 				usleep(10000);
 			}
@@ -326,5 +333,6 @@ int main() {
 	
 	tcsetattr(STDIN_FILENO,TCSANOW,&oldt);
 	printf("\033[?25h"); fflush(stdout);
+	printf("\033[0m"); fflush(stdout);
 	return 0;
 }
