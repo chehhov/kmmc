@@ -54,6 +54,8 @@ void InitObject(TObject *obj, float xPos, float yPos, float oWidth, float oHeigh
 
 bool IsCollision(TObject o1, TObject o2);
 
+void CreateLevel();
+
 void VertMoveObject(TObject *obj) {
 	(*obj).IsFly = true;
 	(*obj).vertSpeed += 0.05;
@@ -64,6 +66,10 @@ void VertMoveObject(TObject *obj) {
 			(*obj).y -= (*obj).vertSpeed;
 			(*obj).vertSpeed = 0;
 			(*obj).IsFly = false;
+			if (brick[i].cType == '+') {
+				CreateLevel();
+				usleep(10000);
+			}
 			break;
 		}
 }
@@ -108,27 +114,28 @@ bool IsCollision(TObject o1, TObject o2) {
 				((o1.y + o1.height) > o2.y) && (o1.y < (o2.y + o2.height)) ;
 }
 
-void ClearLevel() {
+void CreateLevel() {
 	InitObject(&mario, 39, 10, 3, 3, '@');
 	
-	brickLength = 5;
+	brickLength = 6;
 	brick = realloc(brick,  sizeof(*brick) * brickLength );
 	InitObject(brick+0, 20, 20, 40, 5, '#');
 	InitObject(brick+1, 60, 15, 10, 10, '#');
 	InitObject(brick+2, 80, 20, 20, 5, '#');
 	InitObject(brick+3, 120, 15, 10, 10, '#');
 	InitObject(brick+4, 150, 20, 40, 5, '#');
+	InitObject(brick+5, 210, 15, 10, 10, '+');
 }
 
 int main() {
-	ClearLevel();
+	CreateLevel();
 	struct termios oldt, newt; tcgetattr(STDIN_FILENO,&oldt); newt=oldt; newt.c_lflag&=~(ICANON|ECHO); newt.c_cc[VMIN]=0; newt.c_cc[VTIME]=0; tcsetattr(STDIN_FILENO,TCSANOW,&newt);
 	do {
 		ClearMap();
 		
 		{ fd_set f; struct timeval t={0,1000}; FD_ZERO(&f); FD_SET(0,&f); select(1,&f,0,0,&t); char c; if(read(0,&c,1)==1) { if(c==27) break; if(c==' ') mario.vertSpeed=-0.7; if(c=='a'||c=='A') HorizonMoveMAp(1); if(c=='d'||c=='D') HorizonMoveMAp(-1); } }
 		
-		if (mario.y > mapHeight) ClearLevel();
+		if (mario.y > mapHeight) CreateLevel();
 		
 		VertMoveObject(&mario);
 		for (int i = 0; i < brickLength; i++)
