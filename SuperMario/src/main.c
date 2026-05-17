@@ -2,6 +2,9 @@
 #include <stdlib.h>
 
 #include <math.h>
+#include <termios.h>
+#include <unistd.h>
+#include <sys/select.h>
 
 #define mapWidth 80
 #define mapHeight 25
@@ -51,10 +54,24 @@ void PutObjectOnMap(TObject obj) {
 			map[j][i] = '@';
 }
 
+void setCur(int x, int y) {
+    printf("\033[%d;%dH", y + 1, x + 1);
+    fflush(stdout);
+}
+
 int main() {
 	InitObject(&mario, 39, 10, 3, 3);
-	ClearMap();
-	PutObjectOnMap(mario);
-	ShowMap();
+	
+	struct termios oldt, newt; tcgetattr(STDIN_FILENO,&oldt); newt=oldt; newt.c_lflag&=~(ICANON|ECHO); newt.c_cc[VMIN]=0; newt.c_cc[VTIME]=0; tcsetattr(STDIN_FILENO,TCSANOW,&newt);
+	do {
+		ClearMap();
+		PutObjectOnMap(mario);
+		
+		setCur(0, 0);
+		ShowMap();
+		{ fd_set f; struct timeval t={0,10000}; FD_ZERO(&f); FD_SET(0,&f); select(1,&f,0,0,&t); char c; if(read(0,&c,1)==1 && c==27) break; }
+	} while (1);
+	
+	tcsetattr(STDIN_FILENO,TCSANOW,&oldt);
 	return 0;
 }
