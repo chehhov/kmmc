@@ -1,10 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include <math.h>
+
 #define mapWidth 80
 #define mapHeight 25
 
+
+typedef struct SObject {
+	float x, y;
+} TObject;
+
 char map[mapHeight][mapWidth+1];
+TObject mario;
 
 void ClearMap() {
     for (int i = 0; i < mapWidth; i++)
@@ -20,8 +28,21 @@ void ShowMap() {
 		printf("%s", map[j]);
 }
 
+void SetObjectPos(TObject *obj, float xPos, float yPos) {
+	(*obj).x = xPos;
+	(*obj).y = yPos;
+}
+
+void PutObjectOnMap(TObject obj) {
+	int ix = (int)round(obj.x);
+	int iy = (int)round(obj.y);
+	map[iy][ix] = '@';
+}
+
 int main() {
-		ClearMap();
-		ShowMap();
-		return 0;
+	SetObjectPos(&mario, 20, 10);
+	ClearMap();
+	PutObjectOnMap(mario);
+	ShowMap();
+	return 0;
 }
