@@ -1,10 +1,10 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h> 
+#include <cstdio>
+#include <cstdlib>
 
 
 
-#include <math.h>
+#include <cmath>
+#include <cstring>
 #include <termios.h>
 #include <unistd.h>
 #include <sys/select.h>
@@ -13,22 +13,22 @@
 #define mapHeight 25
 
 
-typedef struct SObject {
-	float x, y;
-	float width, height;
-	float vertSpeed;
-	bool IsFly;
-	char cType;
-	float horizSpeed;
-} TObject;
+struct TObject {
+    float x, y;
+    float width, height;
+    float vertSpeed;
+    bool IsFly;
+    char cType;
+    float horizSpeed;
+};
 
 char map[mapHeight][mapWidth+1];
 TObject mario;
 
-TObject *brick = NULL;
+TObject *brick = nullptr;
 int brickLength;
 
-TObject *moving = NULL;
+TObject *moving = nullptr;
 int movingLength;
 
 int level = 1;
@@ -40,7 +40,7 @@ void ClearMap() {
 		map[0][i] = ' ';
 	map[0][mapWidth] = '\0';
 	for (int j = 0; j < mapHeight; j++)
-		sprintf( map[j], map[0]);
+		strcpy(map[j], map[0]);
 }
 
 void ShowMap() {
@@ -63,6 +63,9 @@ void InitObject(TObject *obj, float xPos, float yPos, float oWidth, float oHeigh
 	(*obj).horizSpeed = 0.2;
 }
 
+
+void CreateLevel(int lvl);
+
 void PlayerDead() {
     printf("\033[41m\033[2J"); fflush(stdout);
     usleep(500000);
@@ -72,7 +75,6 @@ void PlayerDead() {
 
 bool IsCollision(TObject o1, TObject o2);
 
-void CreateLevel(int lvl);
 TObject *GetNewMoving();
 
 void VertMoveObject(TObject *obj) {
@@ -99,7 +101,7 @@ void VertMoveObject(TObject *obj) {
 				if (level > maxLvl) level = 1;
 				
 				printf("\033[42m\033[2J"); fflush(stdout);
-				usleep(500000);
+				usleep(500000); 
 				printf("\033[44m\033[2J"); fflush(stdout); 
 				
 				CreateLevel(level);
@@ -112,7 +114,7 @@ void VertMoveObject(TObject *obj) {
 void DeleteMoving(int i) {
 	movingLength--;
 	moving[i] = moving[movingLength];
-	moving = realloc( moving, sizeof(*moving) * movingLength );
+	moving = (TObject*)realloc( moving, sizeof(TObject) * movingLength );
 }
 
 
@@ -208,13 +210,13 @@ bool IsCollision(TObject o1, TObject o2) {
 
 TObject *GetNewBrick() {
 	brickLength++;
-	brick = realloc( brick, sizeof(*brick) * brickLength);
+	brick = (TObject*)realloc( brick, sizeof(TObject) * brickLength);
 	return brick + brickLength - 1;
 }
 
 TObject *GetNewMoving() {
 	movingLength++;
-	moving = realloc( moving, sizeof(*moving) * movingLength);
+	moving = (TObject*)realloc( moving, sizeof(TObject) * movingLength);
 	return moving + movingLength - 1;
 }
 
@@ -233,9 +235,9 @@ void CreateLevel(int lvl) {
 	
 	
 	brickLength = 0;
-	brick = realloc( brick, 0);
+	free(brick); brick = nullptr;
 	movingLength = 0;
-	moving = realloc( moving, 0 );
+	free(moving); moving = nullptr;
 	
 	InitObject(&mario, 39, 10, 3, 3, '@');
 	score = 0;
@@ -333,6 +335,5 @@ int main() {
 	
 	tcsetattr(STDIN_FILENO,TCSANOW,&oldt);
 	printf("\033[?25h"); fflush(stdout);
-	printf("\033[0m"); fflush(stdout);
 	return 0;
 }
