@@ -2,10 +2,9 @@
 #include <cstdlib>
 #include <cmath>
 #include <cstring>
-
-#include <termios.h>
 #include <unistd.h>
-#include <sys/select.h>
+
+#include <ncurses.h>
 
 
 struct GameObject {
@@ -58,29 +57,26 @@ int main() {
 
     create_level(maxLvl, brickLength, movingLength, brick, moving, mario, score, level);
     
-    struct termios oldt, newt; 
-    tcgetattr(STDIN_FILENO, &oldt); 
-    newt = oldt; 
-    newt.c_lflag &= ~(ICANON | ECHO); 
-    newt.c_cc[VMIN] = 0; 
-    newt.c_cc[VTIME] = 0; 
-    tcsetattr(STDIN_FILENO, TCSANOW, &newt);
-    
-    printf("\033[44m\033[2J");
-    printf("\033[?25l"); 
-    fflush(stdout);
+    initscr();
+    noecho();
+    cbreak();
+    nodelay(stdscr, TRUE);
+    curs_set(0);
+    start_color();
+    init_pair(1, COLOR_WHITE, COLOR_BLUE); 
+    init_pair(2, COLOR_WHITE, COLOR_RED);
+    init_pair(3, COLOR_WHITE, COLOR_GREEN);
+    bkgd(COLOR_PAIR(1));
+    clear();
+    refresh();
     
     do {
         clear_map(map, MAP_HEIGHT, MAP_WIDTH);
         
         {
-            fd_set f; 
-            struct timeval t = {0, 16000}; 
-            FD_ZERO(&f); 
-            FD_SET(0, &f); 
-            select(1, &f, 0, 0, &t); 
-            char c; 
-            if (read(0, &c, 1) == 1) {
+            napms(16);
+            int c = getch();
+            if (c != ERR) {
                 if (c == 27) {
                     break;
                 }
@@ -126,21 +122,17 @@ int main() {
         show_map(map, MAP_HEIGHT, MAP_WIDTH);
         
         {
-            fd_set f; 
-            struct timeval t = {0, 10000}; 
-            FD_ZERO(&f); 
-            FD_SET(0, &f); 
-            select(1, &f, 0, 0, &t); 
-            char c; 
-            if (read(0, &c, 1) == 1 && c == 27) {
+            napms(10);
+            int c = getch();
+            if (c == 27) {
                 break;
             }
         }
     } while (1);
     
-    tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
-    printf("\033[?25h"); 
-    fflush(stdout);
+	
+	endwin();
+   
     
     for (int i = 0; i < MAP_HEIGHT; i++) {
         delete[] map[i];
@@ -349,12 +341,11 @@ void mario_collision(GameObject &mario, int &movingLength, GameObject* &moving,
 void player_dead(int &level, int &maxLvl, int &brickLength,
 							   int &movingLength, GameObject* &brick, GameObject* &moving,
 							   GameObject &mario, int &score) {
-    printf("\033[41m\033[2J"); 
-    fflush(stdout);
-    usleep(500000);
-    printf("\033[44m\033[2J"); 
-    fflush(stdout);
-    
+								   
+    bkgd(COLOR_PAIR(2)); clear(); refresh();
+    napms(500);
+    bkgd(COLOR_PAIR(1)); clear(); refresh();
+	
     create_level(maxLvl, brickLength, movingLength, brick, moving, mario, score, level);
 }
 
@@ -394,17 +385,15 @@ void set_object_pos(GameObject *obj, float xPos, float yPos) {
 
 
 void show_map(char** map, int MAP_HEIGHT, int MAP_WIDTH) {
-    map[MAP_HEIGHT - 1][MAP_WIDTH - 1] = '\0';
-    
     for (int j = 0; j < MAP_HEIGHT; j++) {
-        printf("%s", map[j]);
+        mvaddnstr(j, 0, map[j], MAP_WIDTH);
     }
+    refresh(); 
 }
 
 
 void set_cur(int x, int y) {
-    printf("\033[%d;%dH", y + 1, x + 1);
-    fflush(stdout);
+	move(y, x);
 }
 
 
@@ -439,14 +428,11 @@ void vert_move_object(GameObject *obj, int &brickLength, GameObject* &brick,
                     level = 1;
                 }
                 
-                printf("\033[42m\033[2J"); 
-                fflush(stdout);
-                usleep(500000); 
-                printf("\033[44m\033[2J"); 
-                fflush(stdout); 
-                
+                bkgd(COLOR_PAIR(3)); clear(); refresh();
+                napms(500); 
+                bkgd(COLOR_PAIR(1)); clear(); refresh();
+				
                 create_level(maxLvl, brickLength, movingLength, brick, moving, mario, score, level);
-                usleep(10000);
             }
             break;
         }
