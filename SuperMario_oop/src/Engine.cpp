@@ -36,7 +36,9 @@ namespace lae {
 		}
 		
         if (c == ' ') {
-			level.mario.vertical_speed = -1.0f;
+			if (!level.mario.is_fly) {
+				level.mario.vertical_speed = -1.0f;
+			}
 		}
 		
         if (c == 'a' || c == 'A') {
